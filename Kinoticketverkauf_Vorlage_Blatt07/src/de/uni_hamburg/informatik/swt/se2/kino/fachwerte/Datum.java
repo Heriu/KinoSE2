@@ -4,6 +4,7 @@ import java.util.Calendar;
 import java.util.TimeZone;
 
 /**
+ * EIN TEST  EIN TEST EIN TEST EIN TEST EIN TEST EIN TEST EIN TEST EIN TEST EIN TEST EIN TEST EIN TEST EIN TEST EIN TEST
  * Ein Kalenderdatum, bestehend aus Tag, Monat und Jahr.
  * 
  * Das Klassenobjekt stellt zwei Hilfsmethoden zur Verfügung, um das heutige
