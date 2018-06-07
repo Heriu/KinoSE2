@@ -4,7 +4,10 @@ import java.util.Calendar;
 import java.util.TimeZone;
 
 /**
- * EIN TEST  EIN TEST EIN TEST EIN TEST EIN TEST EIN TEST EIN TEST EIN TEST EIN TEST EIN TEST EIN TEST EIN TEST EIN TEST
+ * 
+ * 
+ * 
+ * EIN WEITERER TEST EIN WEITERER TEST EIN WEITERER TEST EIN WEITERER TEST
  * Ein Kalenderdatum, bestehend aus Tag, Monat und Jahr.
  * 
  * Das Klassenobjekt stellt zwei Hilfsmethoden zur Verfügung, um das heutige
@@ -49,7 +52,8 @@ public final class Datum implements Comparable<Datum>
      */
     public Datum(int tag, int monat, int jahr)
     {
-        assert istGueltig(tag, monat, jahr) : "Vorbedingung verletzt: istGueltig(tag, monat, jahr)";
+        assert istGueltig(tag, monat,
+                jahr) : "Vorbedingung verletzt: istGueltig(tag, monat, jahr)";
 
         _tag = tag;
         _monat = monat;
@@ -95,7 +99,7 @@ public final class Datum implements Comparable<Datum>
                 CALENDAR.set(Calendar.YEAR, jahr);
                 CALENDAR.set(Calendar.MONTH, monat - 1);
                 gueltig = ((tag >= 1) && (tag <= CALENDAR
-                        .getActualMaximum(Calendar.DAY_OF_MONTH)));
+                    .getActualMaximum(Calendar.DAY_OF_MONTH)));
             }
         }
         return gueltig;
@@ -123,8 +127,8 @@ public final class Datum implements Comparable<Datum>
         {
             Datum vergleichsdatum = (Datum) o;
             result = ((getTag() == vergleichsdatum.getTag())
-                    && (getMonat() == vergleichsdatum.getMonat()) && (getJahr() == vergleichsdatum
-                    .getJahr()));
+                    && (getMonat() == vergleichsdatum.getMonat())
+                    && (getJahr() == vergleichsdatum.getJahr()));
         }
         return result;
     }
