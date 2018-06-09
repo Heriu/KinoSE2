@@ -3,6 +3,7 @@ package de.uni_hamburg.informatik.swt.se2.kino.werkzeuge.kasse;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+import de.uni_hamburg.informatik.swt.se2.kino.beobachterService.Beobachter;
 import de.uni_hamburg.informatik.swt.se2.kino.fachwerte.Datum;
 import de.uni_hamburg.informatik.swt.se2.kino.materialien.Kino;
 import de.uni_hamburg.informatik.swt.se2.kino.materialien.Tagesplan;
@@ -67,14 +68,15 @@ public class KassenWerkzeug
      */
     private void registriereUIAktionen()
     {
-        _ui.getBeendenButton().addActionListener(new ActionListener()
-        {
-            @Override
-            public void actionPerformed(ActionEvent e)
+        _ui.getBeendenButton()
+            .addActionListener(new ActionListener()
             {
-                reagiereAufBeendenButton();
-            }
-        });
+                @Override
+                public void actionPerformed(ActionEvent e)
+                {
+                    reagiereAufBeendenButton();
+                }
+            });
     }
 
     /**
@@ -117,6 +119,22 @@ public class KassenWerkzeug
      */
     private Vorstellung getAusgewaehlteVorstellung()
     {
+        registriereVorstellungsAuswahlAktion();
         return _vorstellungAuswaehlWerkzeug.getAusgewaehlteVorstellung();
+
+    }
+
+    private void registriereVorstellungsAuswahlAktion()
+    {
+        _vorstellungAuswaehlWerkzeug.setzeBeobachter(new Beobachter()
+        {
+
+            @Override
+            public void beachteAenderung()
+            {
+                setzeAusgewaehlteVorstellung();
+            }
+
+        });
     }
 }
