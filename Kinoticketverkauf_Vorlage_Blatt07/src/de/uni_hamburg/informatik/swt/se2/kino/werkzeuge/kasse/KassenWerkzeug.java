@@ -85,8 +85,10 @@ public class KassenWerkzeug
      */
     private void setzeTagesplanFuerAusgewaehltesDatum()
     {
+        DatumAuswaehlWerkezugAktion();
         Tagesplan tagesplan = _kino.getTagesplan(getAusgewaehltesDatum());
         _vorstellungAuswaehlWerkzeug.setTagesplan(tagesplan);
+
     }
 
     /**
@@ -133,6 +135,20 @@ public class KassenWerkzeug
             public void beachteAenderung()
             {
                 setzeAusgewaehlteVorstellung();
+            }
+
+        });
+    }
+
+    private void DatumAuswaehlWerkezugAktion()
+    {
+        _datumAuswaehlWerkzeug.setzeBeobachter(new Beobachter()
+        {
+
+            @Override
+            public void beachteAenderung()
+            {
+                setzeTagesplanFuerAusgewaehltesDatum();
             }
 
         });

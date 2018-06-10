@@ -1,14 +1,15 @@
 package de.uni_hamburg.informatik.swt.se2.kino.beobachterService;
 
-import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.Set;
 
 public abstract class Beobachtbar
 {
-    private ArrayList<Beobachter> _beobachter;
+    private Set<Beobachter> _beobachter;
 
     public Beobachtbar()
     {
-        _beobachter = new ArrayList<Beobachter>();
+        _beobachter = new HashSet<Beobachter>();
     }
 
     public void setzeBeobachter(Beobachter b)
@@ -20,11 +21,17 @@ public abstract class Beobachtbar
         }
     }
 
+    public void entferneBeobachter(Beobachter b)
+    {
+        _beobachter.remove(b);
+    }
+
     protected void meldeAenderung()
     {
         for (Beobachter b : _beobachter)
         {
             b.beachteAenderung();
+            entferneBeobachter(b);
         }
     }
 }
