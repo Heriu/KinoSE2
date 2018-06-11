@@ -126,6 +126,11 @@ public class KassenWerkzeug
 
     }
 
+    /**
+     * Setzt einen neuen Beobachter für das _vorstellungsAuswaehlWerkzeug. 
+     * Dieser wird mithilfe einer anonymen Klasse erstellt, die als Implementierung
+     * für die Methode beachteAenderung() setzteAusgewaehlteVorstellung() aufruft.
+     */
     private void registriereVorstellungsAuswahlAktion()
     {
         _vorstellungAuswaehlWerkzeug.setzeBeobachter(new Beobachter()
@@ -140,6 +145,11 @@ public class KassenWerkzeug
         });
     }
 
+    /**
+     * Setzt einen neuen Beobachter für das _datumAuswaehlWerkzeug. 
+     * Dieser wird mithilfe einer anonymen Klasse erstellt, die als Implementierung
+     * für die Methode beachteAenderung() setzteTagesplanFuerAusgewaehltesDatum() aufruft.
+     */
     private void DatumAuswaehlWerkezugAktion()
     {
         _datumAuswaehlWerkzeug.setzeBeobachter(new Beobachter()
