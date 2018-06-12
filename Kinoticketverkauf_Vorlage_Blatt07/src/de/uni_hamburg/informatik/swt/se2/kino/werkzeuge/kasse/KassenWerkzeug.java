@@ -59,6 +59,7 @@ public class KassenWerkzeug
         registriereUIAktionen();
         setzeTagesplanFuerAusgewaehltesDatum();
         setzeAusgewaehlteVorstellung();
+        erzeugeBeobachter();
 
         _ui.zeigeFenster();
     }
@@ -85,7 +86,6 @@ public class KassenWerkzeug
      */
     private void setzeTagesplanFuerAusgewaehltesDatum()
     {
-        DatumAuswaehlWerkezugAktion();
         Tagesplan tagesplan = _kino.getTagesplan(getAusgewaehltesDatum());
         _vorstellungAuswaehlWerkzeug.setTagesplan(tagesplan);
 
@@ -121,17 +121,14 @@ public class KassenWerkzeug
      */
     private Vorstellung getAusgewaehlteVorstellung()
     {
-        registriereVorstellungsAuswahlAktion();
         return _vorstellungAuswaehlWerkzeug.getAusgewaehlteVorstellung();
-
     }
 
     /**
-     * Setzt einen neuen Beobachter für das _vorstellungsAuswaehlWerkzeug. 
-     * Dieser wird mithilfe einer anonymen Klasse erstellt, die als Implementierung
-     * für die Methode beachteAenderung() setzteAusgewaehlteVorstellung() aufruft.
+     * Erzeugt mithilfe der anonymen Klassen eine Implementierung
+     * für die Methode beachteAenderung() für eine Vorstellungsauswahlaktion und eine Datumauswahlaktion.
      */
-    private void registriereVorstellungsAuswahlAktion()
+    private void erzeugeBeobachter()
     {
         _vorstellungAuswaehlWerkzeug.setzeBeobachter(new Beobachter()
         {
@@ -143,15 +140,7 @@ public class KassenWerkzeug
             }
 
         });
-    }
 
-    /**
-     * Setzt einen neuen Beobachter für das _datumAuswaehlWerkzeug. 
-     * Dieser wird mithilfe einer anonymen Klasse erstellt, die als Implementierung
-     * für die Methode beachteAenderung() setzteTagesplanFuerAusgewaehltesDatum() aufruft.
-     */
-    private void DatumAuswaehlWerkezugAktion()
-    {
         _datumAuswaehlWerkzeug.setzeBeobachter(new Beobachter()
         {
 
@@ -163,4 +152,5 @@ public class KassenWerkzeug
 
         });
     }
+
 }

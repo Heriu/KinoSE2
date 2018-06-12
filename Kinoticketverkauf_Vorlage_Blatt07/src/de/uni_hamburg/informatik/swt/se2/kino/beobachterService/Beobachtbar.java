@@ -39,6 +39,7 @@ public abstract class Beobachtbar
      */
     public void entferneBeobachter(Beobachter b)
     {
+        assert b != null : "Vorbedingung verletzt: beobachter != null";
         _beobachter.remove(b);
     }
 
@@ -52,7 +53,6 @@ public abstract class Beobachtbar
         for (Beobachter b : _beobachter)
         {
             b.beachteAenderung();
-            entferneBeobachter(b);
         }
     }
 }
